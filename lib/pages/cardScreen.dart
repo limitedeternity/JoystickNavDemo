@@ -256,16 +256,30 @@ class CardScreenState extends State<CardScreen> {
               borderRadius: BorderRadius.circular(20),
             ),
             child: Stack(
+              key: UniqueKey(),
               children: <Widget>[
-                Center(
-                  child: Text(
-                    "Card ${index + 1}",
-                    style: TextStyle(fontSize: 32),
-                  ),
-                ),
                 Image.network(
-                  "https://picsum.photos/1920/1080",
+                  "https://picsum.photos/1920/1080?idx=$index",
                   fit: BoxFit.cover,
+                ),
+                Center(
+                  child: SizedBox(
+                    width: 200.0,
+                    height: 48.0,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: Color.fromRGBO(255, 255, 255, 0.8),
+                      ),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          "Card ${index + 1}",
+                          style: TextStyle(fontSize: 32),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ],
               fit: StackFit.expand,
